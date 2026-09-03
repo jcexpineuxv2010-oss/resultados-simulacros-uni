@@ -57,7 +57,7 @@
         <div class="admin-card">
             <div class="admin-intro">
                 <h2>Aptitud académica y humanidades</h2>
-                <p>Sube el archivo Excel con los resultados del examen de aptitud académica y humanidades.</p>
+                <p>Sube el archivo Excel con los resultados de aptitud académica y humanidades.</p>
             </div>
             <div class="admin-section">
                 <div class="instructions-box">
@@ -65,7 +65,7 @@
                 </div>
                 <div class="upload-group">
                     <input type="file" id="excelFileHum" accept=".xlsx, .xls, .csv" class="file-input">
-                    <button class="btn-uni" onclick="procesarArchivoHum()">Procesar y Generar</button>
+                    <button class="btn-uni" onclick="procesarCategoria('excelFileHum', 'statusMessageHum', 'humanidades')">Procesar Categoría</button>
                 </div>
                 <div id="statusMessageHum" class="status-box oculto"></div>
             </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="upload-group">
                     <input type="file" id="excelFileMat" accept=".xlsx, .xls, .csv" class="file-input">
-                    <button class="btn-uni" onclick="procesarArchivoMat()">Procesar y Generar</button>
+                    <button class="btn-uni" onclick="procesarCategoria('excelFileMat', 'statusMessageMat', 'matematica')">Procesar Categoría</button>
                 </div>
                 <div id="statusMessageMat" class="status-box oculto"></div>
             </div>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="upload-group">
                     <input type="file" id="excelFileCie" accept=".xlsx, .xls, .csv" class="file-input">
-                    <button class="btn-uni" onclick="procesarArchivoCie()">Procesar y Generar</button>
+                    <button class="btn-uni" onclick="procesarCategoria('excelFileCie', 'statusMessageCie', 'ciencias')">Procesar Categoría</button>
                 </div>
                 <div id="statusMessageCie" class="status-box oculto"></div>
             </div>
@@ -111,7 +111,7 @@
         <div class="admin-card">
             <div class="admin-intro">
                 <h2>Resultados generales</h2>
-                <p>Sube el archivo Excel con los resultados generales.</p>
+                <p>Sube el archivo Excel con los resultados generales (con cálculo de especialidad).</p>
             </div>
             <div class="admin-section">
                 <div class="instructions-box">
@@ -119,12 +119,21 @@
                 </div>
                 <div class="upload-group">
                     <input type="file" id="excelFileGen" accept=".xlsx, .xls, .csv" class="file-input">
-                    <button class="btn-uni" onclick="procesarArchivoGen()">Procesar y Generar</button>
+                    <button class="btn-uni" onclick="procesarCategoria('excelFileGen', 'statusMessageGen', 'admision', true)">Procesar Categoría</button>
                 </div>
                 <div id="statusMessageGen" class="status-box oculto"></div>
             </div>
         </div>
 
+    </div>
+
+    <!-- BOTÓN GLOBAL DE DESCARGA PARA GITHUB -->
+    <div class="admin-card" style="margin-top: 30px; text-align: center; background: #f8f9fa;">
+        <div class="admin-intro">
+            <h2>Publicar cambios globales</h2>
+            <p>Una vez procesadas las categorías necesarias, genera el archivo final para subirlo a GitHub.</p>
+        </div>
+        <button class="btn-uni" style="font-size: 16px; padding: 12px 24px; background-color: #28a745;" onclick="descargarDatosJSON()">📥 Descargar datos.json actualizado</button>
     </div>
 </main>
 
@@ -146,6 +155,14 @@
 
     <!-- Lógica del Panel -->
 <script>
+    // Objeto global temporal que almacena los datos de la sesión del tutor
+    let datosGlobalesCompletos = {
+        admision: [],
+        matematica: [],
+        ciencias: [],
+        humanidades: []
+    };
+
     function verificarPassword() {
         const pass = document.getElementById('passwordInput').value;
         const errorMsg = document.getElementById('errorMsg');
@@ -160,8 +177,8 @@
         }
     }
 
-    // Función genérica optimizada para procesar archivos Excel
-    function ejecutarProcesamientoExcel(idInputFile, idMsgStatus, storageKey, usarRangos = false) {
+    // Función para procesar archivos y almacenarlos temporalmente en memoria
+    function procesarCategoria(idInputFile, idMsgStatus, claveCategoria, usarRangos = false) {
         const fileInput = document.getElementById(idInputFile);
         const statusMsg = document.getElementById(idMsgStatus);
 
@@ -188,7 +205,6 @@
                     throw new Error("El archivo está vacío o no tiene datos válidos.");
                 }
 
-                // Tabla de rangos solo se usa si 'usarRangos' es true (Resultados Generales)
                 const rangosCarreras = usarRangos ? [
                     { carrera: "ARQUITECTURA", min: 11.930, max: 14.315 },
                     { carrera: "URBANISMO", min: 9.213, max: 11.333 },
@@ -261,9 +277,10 @@
                     return puntajeB - puntajeA;
                 });
 
-                localStorage.setItem(storageKey, JSON.stringify(listaFormateada));
+                // Guardamos en el objeto temporal
+                datosGlobalesCompletos[claveCategoria] = listaFormateada;
 
-                statusMsg.textContent = `✔ ¡Éxito! Se procesaron ${listaFormateada.length} registros correctamente.`;
+                statusMsg.textContent = `✔ Procesado con éxito (${listaFormateada.length} registros). No olvides descargar el JSON al final.`;
                 statusMsg.className = "status-box success";
                 statusMsg.classList.remove('oculto');
 
@@ -277,22 +294,18 @@
         lector.readAsArrayBuffer(archivo);
     }
 
-    // Funciones individuales para cada botón (Humanidades, Matemática, Ciencias y Generales)
-    function procesarArchivoHum() {
-        ejecutarProcesamientoExcel('excelFileHum', 'statusMessageHum', 'gc_resultados_humanidades', false);
-    }
-
-    function procesarArchivoMat() {
-        ejecutarProcesamientoExcel('excelFileMat', 'statusMessageMat', 'gc_resultados_matematica', false);
-    }
-
-    function procesarArchivoCie() {
-        ejecutarProcesamientoExcel('excelFileCie', 'statusMessageCie', 'gc_resultados_ciencias', false);
-    }
-
-    function procesarArchivoGen() {
-        // AQUÍ ES EL ÚNICO LUGAR DONDE ESTÁ EN 'true' PARA APLICAR LA LÓGICA DE CARRERAS
-        ejecutarProcesamientoExcel('excelFileGen', 'statusMessageGen', 'gc_resultados_generales', true);
+    // Función que genera y descarga el archivo datos.json listo para GitHub
+    function descargarDatosJSON() {
+        let contenidoJSON = JSON.stringify(datosGlobalesCompletos, null, 2);
+        let blob = new Blob([contenidoJSON], { type: "application/json" });
+        let url = URL.createObjectURL(blob);
+        
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "datos.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     }
 </script>
 
