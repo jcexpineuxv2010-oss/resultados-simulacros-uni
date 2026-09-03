@@ -99,19 +99,9 @@
             const tbody = document.getElementById("cuerpoTabla");
             const contadorRegistros = document.getElementById("contadorRegistros");
             
-            // Intentamos recuperar los datos enviados desde admin.html
+            // Recuperamos directamente los datos del localStorage (si no hay, se queda vacío)
             const datosGuardados = localStorage.getItem('gc_resultados_admision');
-            let resultados = [];
-
-            if (datosGuardados) {
-                resultados = JSON.parse(datosGuardados);
-            } else {
-                // Datos por defecto si aún no se ha subido ningún Excel
-                resultados = [
-                    { id: 1, dni: "65116J", nombre: "ABAD YESQUEN RICHARD GABRIEL", modalidad: "ORDINARIO", puntaje: "1189,200", especialidad: "INGENIERÍA NAVAL" },
-                    { id: 2, dni: "36094F", nombre: "ABANTO CONTRERAS PIERO ALEXANDER", modalidad: "ORDINARIO", puntaje: "1040,400", especialidad: "INGENIERÍA ECONÓMICA" }
-                ];
-            }
+            let resultados = datosGuardados ? JSON.parse(datosGuardados) : [];
 
             // Actualiza el contador en pantalla
             if (contadorRegistros) {
@@ -121,17 +111,17 @@
             // Pinta los datos dentro de la tabla
             tbody.innerHTML = "";
             resultados.forEach((item) => {
-    let fila = `
-        <tr>
-            <td class="codigo-col">${item.dni}</td>
-            <td>${item.nombre}</td>
-            <td><strong>${item.puntaje}</strong></td>
-            <td><span class="badge-nota">${item.nota || '0,00'}</span></td>
-            <td class="especialidad-col text-right">${item.especialidad}</td>
-        </tr>
-    `;
-    tbody.innerHTML += fila;
-});
+                let fila = `
+                    <tr>
+                        <td class="codigo-col">${item.dni}</td>
+                        <td>${item.nombre}</td>
+                        <td><strong>${item.puntaje}</strong></td>
+                        <td><span class="badge-nota">${item.nota || '0,00'}</span></td>
+                        <td class="especialidad-col text-right">${item.especialidad}</td>
+                    </tr>
+                `;
+                tbody.innerHTML += fila;
+            });
         }
 
         function filtrarTabla() {
