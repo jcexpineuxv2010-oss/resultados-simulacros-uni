@@ -95,32 +95,42 @@
             cargarDatosTabla();
         });
 
-        function cargarDatosTabla() {
+        async function cargarDatosTabla() {
             const tbody = document.getElementById("cuerpoTabla");
             const contadorRegistros = document.getElementById("contadorRegistros");
             
-            // Recuperamos los datos del localStorage usando la clave correcta de ciencias
-            let resultados = JSON.parse(localStorage.getItem('gc_resultados_ciencias')) || [];
+            try {
+                // Leemos directamente el archivo datos.json unificado de GitHub
+                let respuesta = await fetch('datos.json');
+                if (!respuesta.ok) throw new Error("No se pudo cargar el archivo de datos.");
+                
+                let datosGlobales = await respuesta.json();
+                
+                // Extraemos específicamente la categoría de ciencias
+                let resultados = datosGlobales.ciencias || [];
 
-            // Actualiza el contador en pantalla
-            if (contadorRegistros) {
-                contadorRegistros.textContent = `${resultados.length} registros`;
+                // Actualiza el contador en pantalla
+                if (contadorRegistros) {
+                    contadorRegistros.textContent = `${resultados.length} registros`;
+                }
+
+                // Pinta los datos dentro de la tabla
+                tbody.innerHTML = "";
+                resultados.forEach((item) => {
+                    let fila = `
+                        <tr>
+                            <td class="codigo-col">${item.dni}</td>
+                            <td>${item.nombre}</td>
+                            <td><strong>${item.puntaje}</strong></td>
+                            <td><span class="badge-nota">${item.nota || '0,00'}</span></td>
+                            <td class="especialidad-col text-right">${item.especialidad || ''}</td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += fila;
+                });
+            } catch (error) {
+                console.error("Error al obtener los datos:", error);
             }
-
-            // Pinta los datos dentro de la tabla (si no hay datos, se queda vacía)
-            tbody.innerHTML = "";
-            resultados.forEach((item) => {
-                let fila = `
-                    <tr>
-                        <td class="codigo-col">${item.dni}</td>
-                        <td>${item.nombre}</td>
-                        <td><strong>${item.puntaje}</strong></td>
-                        <td><span class="badge-nota">${item.nota || '0,00'}</span></td>
-                        <td class="especialidad-col text-right">${item.especialidad}</td>
-                    </tr>
-                `;
-                tbody.innerHTML += fila;
-            });
         }
 
         function filtrarTabla() {
