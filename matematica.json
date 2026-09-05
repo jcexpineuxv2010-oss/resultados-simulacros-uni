@@ -1,0 +1,236 @@
+{
+  "matematica": [
+    {
+      "id": 3,
+      "dni": "73397166",
+      "nombre": "RAFAEL GUEVARA JERSON ANGEL",
+      "puntaje": "477,000",
+      "nota": "15,90",
+      "especialidad": ""
+    },
+    {
+      "id": 26,
+      "dni": "74270152",
+      "nombre": "TORRES RANILLA DIEGO FERNANDO",
+      "puntaje": "414,000",
+      "nota": "13,80",
+      "especialidad": ""
+    },
+    {
+      "id": 6,
+      "dni": "75288409",
+      "nombre": "ARIZA BAZAN JOSUE DANIEL",
+      "puntaje": "411,000",
+      "nota": "13,70",
+      "especialidad": ""
+    },
+    {
+      "id": 12,
+      "dni": "75305416",
+      "nombre": "VELIZ ROJAS JOSE LUIS MIGUEL",
+      "puntaje": "399,000",
+      "nota": "13,30",
+      "especialidad": ""
+    },
+    {
+      "id": 23,
+      "dni": "60662228",
+      "nombre": "SANDOVAL OLANO JULIA LEONOR",
+      "puntaje": "375,000",
+      "nota": "12,50",
+      "especialidad": ""
+    },
+    {
+      "id": 28,
+      "dni": "73295908",
+      "nombre": "FORONDA PORRAS EMILIO MARCOS",
+      "puntaje": "345,000",
+      "nota": "11,50",
+      "especialidad": ""
+    },
+    {
+      "id": 29,
+      "dni": "62018829",
+      "nombre": "FRANCO AGUILAR XIMENA MARGARITA",
+      "puntaje": "345,000",
+      "nota": "11,50",
+      "especialidad": ""
+    },
+    {
+      "id": 21,
+      "dni": "75290608",
+      "nombre": "SILVA HUAYTA RODRIGO SEBASTIAN",
+      "puntaje": "336,000",
+      "nota": "11,20",
+      "especialidad": ""
+    },
+    {
+      "id": 17,
+      "dni": "62374192",
+      "nombre": "MARCACUZCO LLAGAS BRISSA",
+      "puntaje": "330,000",
+      "nota": "11,00",
+      "especialidad": ""
+    },
+    {
+      "id": 15,
+      "dni": "76709485",
+      "nombre": "PIZARRO AMIR BERNABE",
+      "puntaje": "318,000",
+      "nota": "10,60",
+      "especialidad": ""
+    },
+    {
+      "id": 14,
+      "dni": "61859599",
+      "nombre": "ALARCON QUISPE JOSUE SEBASTIAN",
+      "puntaje": "315,000",
+      "nota": "10,50",
+      "especialidad": ""
+    },
+    {
+      "id": 1,
+      "dni": "74266685",
+      "nombre": "QUISPE RICAPA SOFIA GUADALUPE",
+      "puntaje": "294,000",
+      "nota": "9,80",
+      "especialidad": ""
+    },
+    {
+      "id": 18,
+      "dni": "77423296",
+      "nombre": "CAMPOS ZAVALETA CRISTOPHER RICARDO",
+      "puntaje": "273,000",
+      "nota": "9,10",
+      "especialidad": ""
+    },
+    {
+      "id": 13,
+      "dni": "74013198",
+      "nombre": "PUMAYALLI GONZALES DANNA AHAVA",
+      "puntaje": "270,000",
+      "nota": "9,00",
+      "especialidad": ""
+    },
+    {
+      "id": 25,
+      "dni": "73292173",
+      "nombre": "RICO LOPEZ MISAEL ALESSANDRO",
+      "puntaje": "270,000",
+      "nota": "9,00",
+      "especialidad": ""
+    },
+    {
+      "id": 19,
+      "dni": "74665909",
+      "nombre": "ROJAS PALMA JASSUMI YIOMAIRA",
+      "puntaje": "234,000",
+      "nota": "7,80",
+      "especialidad": ""
+    },
+    {
+      "id": 11,
+      "dni": "61757137",
+      "nombre": "DE LA CRUZ HUANCA ANDRE JHOAN",
+      "puntaje": "231,000",
+      "nota": "7,70",
+      "especialidad": ""
+    },
+    {
+      "id": 8,
+      "dni": "76721337",
+      "nombre": "ASCARRUZ CHAMORRO ANDRE SNEIJDER",
+      "puntaje": "213,000",
+      "nota": "7,10",
+      "especialidad": ""
+    },
+    {
+      "id": 9,
+      "dni": "60104790",
+      "nombre": "VILLAVICENCIO ESCALANTE RODRIGO",
+      "puntaje": "213,000",
+      "nota": "7,10",
+      "especialidad": ""
+    },
+    {
+      "id": 27,
+      "dni": "71153381",
+      "nombre": "GAMARRA AYALA RENZO LEANDRO",
+      "puntaje": "204,000",
+      "nota": "6,80",
+      "especialidad": ""
+    },
+    {
+      "id": 5,
+      "dni": "75644386",
+      "nombre": "ALEGRE QUISPE BENJAMIN CHRISTIAN",
+      "puntaje": "198,000",
+      "nota": "6,60",
+      "especialidad": ""
+    },
+    {
+      "id": 4,
+      "dni": "72334768",
+      "nombre": "DOROTEO VILLEGAS EDWIN ANTHONY",
+      "puntaje": "174,000",
+      "nota": "5,80",
+      "especialidad": ""
+    },
+    {
+      "id": 24,
+      "dni": "61932166",
+      "nombre": "SOTIL MUÑOZ ANDRES ALEXANDER",
+      "puntaje": "162,000",
+      "nota": "5,40",
+      "especialidad": ""
+    },
+    {
+      "id": 22,
+      "dni": "73295962",
+      "nombre": "PIZARRO APOLINARIO MILADY VICTORIA",
+      "puntaje": "150,000",
+      "nota": "5,00",
+      "especialidad": ""
+    },
+    {
+      "id": 7,
+      "dni": "62641944",
+      "nombre": "ZELAYA MARQUEZ DARLEY GIORDAN",
+      "puntaje": "144,000",
+      "nota": "4,80",
+      "especialidad": ""
+    },
+    {
+      "id": 16,
+      "dni": "73720790",
+      "nombre": "COLAN ESTRADA BRITTANY KEYLEEN",
+      "puntaje": "144,000",
+      "nota": "4,80",
+      "especialidad": ""
+    },
+    {
+      "id": 10,
+      "dni": "60691908",
+      "nombre": "MOGOLLON MELGAREJO ANDY YOSER",
+      "puntaje": "129,000",
+      "nota": "4,30",
+      "especialidad": ""
+    },
+    {
+      "id": 2,
+      "dni": "61878784",
+      "nombre": "RODRIGUEZ PEÑA CAMILA JUDITH ANDREA",
+      "puntaje": "81,000",
+      "nota": "2,70",
+      "especialidad": ""
+    },
+    {
+      "id": 20,
+      "dni": "71157599",
+      "nombre": "CONTRERAS PIZARRO ARÓN ULISES",
+      "puntaje": "72,000",
+      "nota": "2,40",
+      "especialidad": ""
+    }
+  ]
+}
